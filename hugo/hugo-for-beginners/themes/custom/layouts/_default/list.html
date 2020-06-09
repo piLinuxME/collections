@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+{{ block "head" . }}{{ end }}
+
+<body>
+
+{{ block "header" . }}{{ end }}
+{{ block "main" . }}{{ end }}
+{{ partial "footer.html" . }}
+
+</body>
+</html>
+
+{{ define "head" }}
+{{ partial "head.html" . }}
+{{ end }}
+
+{{ define "header" }}
+{{ partial "header.html" . }}
+{{ end }}
+
+{{ define "main" }}
+        <div class="container px-6">
+            <div class="row">
+                <div class="col-md-12">
+                    <ul style="list-style: none;">
+                    {{ range .RegularPages }}
+                    {{ $pageUrl := replace .Permalink ( printf "%s" .Site.BaseURL) "" }}
+                    {{ $pageUrlFull := (printf "/%s" $pageUrl) }}
+                        <li><a href="{{ $pageUrlFull }}">{{ .Title }}</a></li>
+                    {{ end }}
+                    </ul>
+                </div>
+            </div>
+            <br /><br /><br />
+        </div>
+{{ end }}

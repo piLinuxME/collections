@@ -1,0 +1,5 @@
+baseURL = "/"
+title = "Hugo for beginners"
+languageCode = "en-us"
+theme = "custom"
+relativeURLs = true
